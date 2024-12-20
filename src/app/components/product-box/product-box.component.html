@@ -14,7 +14,7 @@
       >
         <div>
           <h5>{{ product.category | titlecase }}</h5>
-          <p class="truncate hover:whitespace-normal">
+          <p class="truncate hover:whitespace-normal ease-in-out transition-all duration-700 overflow-hidden">
             {{ product.title | titlecase }}
           </p>
           <p *ngIf="fullWidthMode">{{ product.description }}</p>
