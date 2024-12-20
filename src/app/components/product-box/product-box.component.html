@@ -1,21 +1,23 @@
-<mat-card [ngClass]="{ 'text-center': !fullWidthMode }">
-  <div [ngClass]="{ flex: fullWidthMode }">
-    <img
-      class="mb-1 mx-auto h-[200px]"
-      [ngClass]="{ 'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode }"
-      src="https://via.placeholder.com/150"
-      alt="placeholder"
-    />
+<ng-container *ngIf="product">
+  <mat-card [ngClass]="{ 'text-center': !fullWidthMode }">
+    <div [ngClass]="{ flex: fullWidthMode }">
+      <img
+        class="mb-1 mx-auto h-[200px]"
+        [ngClass]="{ 'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode }"
+        [src]="product.image"
+        alt="placeholder"
+      />
 
-    <ng-container *ngIf="product">
       <div
         class="w-full"
         [ngClass]="{ 'px-8 flex flex-col justify-between': fullWidthMode }"
       >
         <div>
-          <h5>{{product.category}}</h5>
-          <p class="truncate hover:whitespace-normal">{{product.title}}</p>
-          <p *ngIf="fullWidthMode">{{product.description}}</p>
+          <h5>{{ product.category | titlecase }}</h5>
+          <p class="truncate hover:whitespace-normal">
+            {{ product.title | titlecase }}
+          </p>
+          <p *ngIf="fullWidthMode">{{ product.description }}</p>
         </div>
 
         <div class="flex justify-between">
@@ -26,6 +28,6 @@
           </button>
         </div>
       </div>
-    </ng-container>
-  </div>
-</mat-card>
+    </div>
+  </mat-card>
+</ng-container>
