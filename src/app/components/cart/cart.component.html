@@ -34,7 +34,15 @@
     <ng-container matColumnDef="Quantity">
       <th mat-header-cell *matHeaderCellDef>Quantity</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.quantity }}
+        <button 
+        (click)="onRemoveQuantity(element)"
+        mat-icon-button>
+            <mat-icon>remove</mat-icon>
+        </button>
+        <span>{{ element.quantity }}</span>
+        <button (click)="onAddQuantity(element)" mat-icon-button>
+            <mat-icon>add</mat-icon>
+        </button>
       </td>
       <td mat-footer-cell *matFooterCellDef>Quantity</td>
     </ng-container>
@@ -54,16 +62,19 @@
 
     <ng-container matColumnDef="Action">
       <th mat-header-cell *matHeaderCellDef>
-        <button mat-raised-button color="warn" class="float">Clear All</button>
-        
+        <button mat-raised-button color="warn" class="float" (click)="onClearCart()">Clear All</button>
       </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-mini-fab color="warn">
+        <button mat-mini-fab color="warn" (click)="onRemoveFromCart(element)">
             <mat-icon>close</mat-icon>
         </button>
       </td>
 
-      <td mat-footer-cell *matFooterCellDef>Action</td>
+      <td mat-footer-cell *matFooterCellDef >
+        <button mat-raised-button color="primary" class="float-right">
+            Proceed To Checkout
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

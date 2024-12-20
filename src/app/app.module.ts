@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
-// import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -22,6 +22,9 @@ import { ProductsHeaderComponent } from './pages/products-header/products-header
 import { FiltersComponent } from './components/filters/filters.component';
 import { ProductBoxComponent } from './components/product-box/product-box.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CartService } from './services/cart.service';
+import { StoreService } from './services/store.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -49,9 +52,10 @@ import { CartComponent } from './components/cart/cart.component';
     MatToolbarModule,
     MatTableModule,
     MatBadgeModule,
-    // MatSnackBar,
+    MatSnackBarModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [CartService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
